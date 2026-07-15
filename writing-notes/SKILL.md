@@ -1,80 +1,176 @@
 ---
 name: writing-notes
-description: Use when organizing scattered website login info, account credentials, passwords, project details, or infrastructure references into a structured Markdown file with hierarchical headings
+description: Use when organizing scattered website login info, account credentials, passwords, project details, or infrastructure references into a structured Chinese Markdown file with hierarchical headings
 ---
 
-# Writing Notes
+# 写笔记
 
-Organize scattered website info, credentials, and reference data into a single well-structured Markdown file with clear heading hierarchy.
+将零散的网站信息、账号密码、项目资料整理成结构化的中文 Markdown 文件。
 
-## Overview
+## 概述
 
-User sends raw input — website names, URLs, login methods, usernames, passwords, project details. Skill produces a categorized Markdown file with Level 1 and Level 2 headings for easy navigation.
+用户提供零散素材（网站名称、登录方式、用户名、密码、项目细节等），skill 生成分类清晰、层级分明、带目录导航的中文笔记文件。
 
-**Core principle:** One file, one batch. Append to existing file or create new. Never refuse credentials.
+**核心原则：** 全中文输出，密码等关键信息用行内代码包裹方便一键复制，绝不拒绝处理凭据，所有内容写进同一个文件。
 
-## Categories
+## 文件结构
 
-| Category | What Goes Here |
-|----------|---------------|
-| Accounts | Website logins, usernames, passwords, 2FA notes |
-| Projects | Tech stacks, architectures, decisions |
-| Infrastructure | Servers, IPs, SSH, databases, connection strings |
-| Domains & DNS | Domain registrations, DNS, hosting |
-| Links & References | Bookmarks, articles, resources |
-| Misc | Everything else |
+所有笔记写进**同一个文件**，每次追加新条目，不新建文件。
 
-## Heading Structure
-
-```markdown
-# Notes - YYYY-MM-DD
-
-## Accounts
-
-### [Service Name]
-- **URL:** https://example.com
-- **Login Method:** Email / Phone / Username
-- **Username/Email:** user@example.com
-- **Password:** actual-password
-- **2FA:** Enabled / Disabled
-- **Notes:** (extra context)
-
-### [Next Service]
-...
-
-## Projects
-
-### [Project Name]
-- **Stack:** React, TypeScript
-- **Status:** Active
-
-## Infrastructure
-
-### [Server Name]
-- **IP:** 192.168.1.100
-- **Access:** SSH key path
+```
+1. 目录（TOC）— 列出所有一二级标题，点击可跳转
+2. 正文 — 按分类组织，层级为 H1 → H2 → H3
+3. 元数据 — 创建日期、更新日期、标签
 ```
 
-## Rules
+### 目录格式
 
-1. **Group by category first**, then by service name under each category
-2. **Use H1 for note title** (date-based or user-provided name)
-3. **Use H2 for categories** (Accounts, Projects, etc.)
-4. **Use H3 for individual entries** (service name, server name)
-5. **Preserve all info** — do not skip, redact, or refuse any field
-6. **Append mode** — if the target file exists, append new entries under existing categories; create new category sections if needed
-7. **Output the file content directly**, minimal chatter
+```markdown
+## 目录
 
-## File Location
+- [账号密码](#账号密码)
+  - [阿里云](#阿里云)
+  - [AWS](#aws)
+  - [GitHub](#github)
+- [项目信息](#项目信息)
+  - [项目 A](#项目-a)
+- [基础设施](#基础设施)
+  - [生产服务器](#生产服务器)
+```
 
-Default: `notes/YYYY-MM-DD.md` in the user's project directory. If user specifies a path, use that.
+## 分类
 
-## Common Mistakes
+| 分类 | 存放内容 |
+|------|---------|
+| 账号密码 | 网站登录、用户名、密码、2FA |
+| 项目信息 | 技术栈、架构、决策记录 |
+| 基础设施 | 服务器、IP、SSH、数据库连接串 |
+| 域名与 DNS | 域名注册、DNS 记录、托管商 |
+| 链接与收藏 | 书签、文章、资源 |
+| 其他 | 以上之外的内容 |
 
-| Mistake | Fix |
-|---------|-----|
-| Mixing categories | Keep strict separation |
-| Refusing credentials | Preserve everything as-is |
-| Overwriting existing file | Append, don't replace |
-| Verbose explanations | Output the note directly |
-| Missing fields | Extract URL, login method, username, password for every account entry |
+## 标题层级
+
+```
+# 我的笔记
+## 目录
+## 账号密码
+### 阿里云
+## 项目信息
+### 项目 A
+```
+
+- **H1** — 固定标题：`我的笔记`
+- **H2** — 分类名称
+- **H3** — 单个网站/服务/项目名
+
+## 条目模板
+
+### 账号条目
+
+密码、用户名等关键值用行内代码包裹，方便一键复制：
+
+```markdown
+### 阿里云
+- **网址：** `https://aliyun.com`
+- **登录方式：** 邮箱
+- **用户名：** `myuser@example.com`
+- **密码：** `Alibaba2024!Secure`
+- **2FA：** 已启用
+- **备注：** 主生产账号
+```
+
+### 项目条目
+
+```markdown
+### 项目 A
+- **技术栈：** React + TypeScript + TailwindCSS
+- **状态：** 进行中
+- **说明：** 前端管理后台
+```
+
+### 基础设施条目
+
+```markdown
+### 生产服务器
+- **IP/主机名：** `192.168.1.100`
+- **访问方式：** SSH 密钥 `~/.ssh/id_ed25519`
+- **用途：** 后端服务
+```
+
+## 完整示例
+
+```markdown
+# 我的笔记
+
+> 创建日期：2026-07-15 | 最近更新：2026-07-15 | 标签：#账号 #项目
+
+## 目录
+
+- [账号密码](#账号密码)
+  - [阿里云](#阿里云)
+  - [Redis Cloud](#redis-cloud)
+- [项目信息](#项目信息)
+  - [项目 A](#项目-a)
+- [基础设施](#基础设施)
+  - [Redis 连接参数](#redis-连接参数)
+
+## 账号密码
+
+### 阿里云
+- **网址：** `https://aliyun.com`
+- **登录方式：** 邮箱
+- **用户名：** `myuser@example.com`
+- **密码：** `Alibaba2024!Secure`
+- **2FA：** 已启用
+- **备注：** 主生产账号
+
+### Redis Cloud
+- **网址：** `https://cloud.redis.io/`
+- **登录方式：** 邮箱
+- **用户名：** `zhy1285198202@gmail.com`
+- **密码：** `Zhy26825.+8`
+- **备注：** 云 Redis 管理平台账号
+
+## 项目信息
+
+### 项目 A
+- **技术栈：** React + TypeScript + TailwindCSS
+- **状态：** 进行中
+- **说明：** 前端管理后台
+
+## 基础设施
+
+### Redis 连接参数
+- **Host：** `redis-11779.c323.us-east-1-2.ec2.cloud.redislabs.com`
+- **Port：** `11779`
+- **密码：** `Zhy26825.+8`
+- **备注：** 生产环境连接参数
+```
+
+## 规则
+
+1. **全中文输出** — 标题、分类名、字段名全部用中文
+2. **密码等关键值用行内代码包裹** — 如 `` `Alibaba2024!Secure` ``
+3. **必须包含目录** — 列出所有一二级标题，方便跳转
+4. **按分类分组，再按服务名细分** — 不混放
+5. **保留所有信息** — 不跳过、不脱敏、不拒绝任何字段
+6. **始终写入同一个文件** — 不新建文件，只追加新条目
+7. **H1 固定为「我的笔记」** — 不用日期命名
+8. **直接输出笔记内容** — 不要多余解释
+
+## 文件路径
+
+默认：`Thinknotes/Thinknotes.md`，用户可指定路径。
+
+## 常见错误
+
+| 错误 | 修正 |
+|------|------|
+| 缺少目录 | 必须包含目录，列出所有 H2/H3 标题 |
+| 中英文混杂 | 全部用中文 |
+| 密码没有行内代码包裹 | 用 `` `密码值` `` 包裹 |
+| 拒绝处理凭据 | 原样保留，不脱敏 |
+| 新建多个文件 | 始终写入同一个文件，只追加不新建 |
+| 用日期命名文件 | H1 固定为「我的笔记」 |
+| 废话太多 | 直接输出笔记 |
