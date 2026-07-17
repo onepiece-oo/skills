@@ -1,40 +1,40 @@
 ---
 name: troubleshoot
-description: Systematic troubleshooting with root cause analysis. Use when users report errors, bugs, or unexpected behavior. Never retry without understanding why.
+description: 系统性故障排除，带根本原因分析。当用户报告错误、bug 或意外行为时使用。永远不理解原因就不重试。
 ---
 
-# Troubleshooting Protocol
+# 故障排除协议
 
-Follow this systematic root cause analysis process. NEVER retry the same approach without understanding WHY it failed.
+遵循此系统性根本原因分析流程。永远不理解失败原因之前不要重试同一种方法。
 
-## Protocol
+## 协议
 
-1. **STOP**: Do not re-execute the same command
-2. **Observe**: What exactly happened? What was expected?
-3. **Hypothesize**: What could cause this? (list 2-3 possibilities)
-4. **Investigate**: Check official docs, logs, stack traces, config
-5. **Root Cause**: Identify the fundamental cause (not symptoms)
-6. **Fix**: Implement a solution that addresses the root cause
-7. **Verify**: Confirm the fix works
-8. **Learn**: Document the solution for future reference
+1. **停止：** 不要重新执行相同的命令
+2. **观察：** 到底发生了什么？期望什么？
+3. **假设：** 可能是什么原因？（列出 2-3 种可能性）
+4. **调查：** 检查官方文档、日志、堆栈跟踪、配置
+5. **根本原因：** 确定根本原因（不是症状）
+6. **修复：** 实施解决根本原因的解决方案
+7. **验证：** 确认修复有效
+8. **学习：** 记录解决方案供将来参考
 
-## Anti-Patterns (strictly prohibited)
+## 反模式（严格禁止）
 
-- "Got an error. Let's just try again"
-- "Retry: attempt 1... attempt 2... attempt 3..."
-- "It timed out, so let's increase the wait time" (ignoring root cause)
-- "There are warnings but it works, so it's fine" (future technical debt)
+- "得到一个错误。让我们再试一次"
+- "重试：尝试 1... 尝试 2... 尝试 3..."
+- "它超时了，所以增加等待时间"（忽略根本原因）
+- "有警告但它能工作，所以没关系"（未来的技术债）
 
-## Required Format
+## 必需格式
 
 ```
-## Root Cause Analysis
+## 根本原因分析
 
-**Error**: [Exact error message]
-**Expected**: [What should have happened]
-**Cause**: [Root cause with evidence]
-**Fix**: [Solution addressing root cause]
-**Prevention**: [How to prevent recurrence]
+**错误：** [确切的错误消息]
+**期望：** [应该发生什么]
+**原因：** [带证据的根本原因]
+**修复：** [解决根本原因的方案]
+**预防：** [如何防止复发]
 ```
 
-Apply this to: $ARGUMENTS
+适用于：$ARGUMENTS

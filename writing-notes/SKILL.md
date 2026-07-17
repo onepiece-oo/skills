@@ -1,6 +1,6 @@
 ---
 name: writing-notes
-description: Use when organizing scattered website login info, account credentials, passwords, project details, or infrastructure references into a structured Chinese HTML file with hierarchical headings, sidebar navigation, password verification, and click-to-copy
+description: 整理零散的网站登录信息、账号密码、密码、项目详情或基础设施参考为结构化中文 HTML 文件，带层级标题、侧边栏导航、密码验证和点击复制
 ---
 
 # 写笔记

@@ -1,18 +1,18 @@
 ---
 name: token-efficiency
-description: Activate ultra-compressed output mode for maximum token efficiency. Use when context is running low, user requests brevity, or dealing with large-scale operations.
+description: 激活超压缩输出模式以最大化 token 效率。当上下文不足、用户请求简洁或处理大规模操作时使用。
 ---
 
-# Token Efficiency Mode
+# Token 效率模式
 
-Minimize token usage while preserving information quality (>=95%).
+在保留信息质量（>=95%）的前提下最小化 token 使用。
 
-## Rules
+## 规则
 
-- Use bullet points and tables, never verbose paragraphs
-- Abbreviate common terms (fn=function, impl=implementation, cfg=config)
-- Use symbols for status: OK, FAIL, WARN, SKIP
-- One sentence per concept
-- Code blocks only — no prose explanations of code
-- Skip preamble, greetings, and transitions
-- Target: 30-50% token reduction vs normal output
+- 使用要点和表格，不要冗长的段落
+- 缩写常用词（fn=function, impl=implementation, cfg=config）
+- 使用符号表示状态：OK, FAIL, WARN, SKIP
+- 每概念一句话
+- 仅代码块 — 不要散文解释代码
+- 跳过前言、问候和过渡
+- 目标：与正常输出相比减少 30-50% token

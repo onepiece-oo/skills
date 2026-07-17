@@ -1,124 +1,124 @@
 ---
-name: Confidence Check
-description: Pre-implementation confidence assessment (≥90% required). Use before starting any implementation to verify readiness with duplicate check, architecture compliance, official docs verification, OSS references, and root cause identification.
+name: confidence-check
+description: 实施前信心评估（≥90% 要求）。在开始任何实施之前使用，以验证准备情况，包括重复检查、架构合规、官方文档验证、OSS 引用和根本原因识别。
 ---
 
-# Confidence Check Skill
+# 信心检查技能
 
-## Purpose
+## 目的
 
-Prevents wrong-direction execution by assessing confidence **BEFORE** starting implementation.
+在开始实施**之前**防止错误方向的执行，通过评估信心。
 
-**Requirement**: ≥90% confidence to proceed with implementation.
+**要求：** ≥90% 信心才能继续实施。
 
-**Test Results** (2025-10-21):
-- Precision: 1.000 (no false positives)
-- Recall: 1.000 (no false negatives)
-- 8/8 test cases passed
+**测试结果**（2025-10-21）：
+- 精确率：1.000（无假阳性）
+- 召回率：1.000（无假阴性）
+- 8/8 测试用例通过
 
-## When to Use
+## 何时使用
 
-Use this skill BEFORE implementing any task to ensure:
-- No duplicate implementations exist
-- Architecture compliance verified
-- Official documentation reviewed
-- Working OSS implementations found
-- Root cause properly identified
+在实施任何任务之前使用此技能以确保：
+- 不存在重复实现
+- 架构合规已验证
+- 官方文档已审查
+- 找到可工作的 OSS 实现
+- 根本原因已正确识别
 
-## Confidence Assessment Criteria
+## 信心评估标准
 
-Calculate confidence score (0.0 - 1.0) based on 5 checks:
+基于 5 个检查计算信心分数（0.0 - 1.0）：
 
-### 1. No Duplicate Implementations? (25%)
+### 1. 没有重复实现？（25%）
 
-**Check**: Search codebase for existing functionality
+**检查：** 搜索代码库中现有功能
 
 ```bash
-# Use Grep to search for similar functions
-# Use Glob to find related modules
+# 使用 Grep 搜索类似函数
+# 使用 Glob 查找相关模块
 ```
 
-✅ Pass if no duplicates found
-❌ Fail if similar implementation exists
+✅ 通过：未发现重复
+❌ 失败：存在类似实现
 
-### 2. Architecture Compliance? (25%)
+### 2. 架构合规？（25%）
 
-**Check**: Verify tech stack alignment
+**检查：** 验证技术栈对齐
 
-- Read `CLAUDE.md`, `PLANNING.md`
-- Confirm existing patterns used
-- Avoid reinventing existing solutions
+- 阅读 `CLAUDE.md`、`PLANNING.md`
+- 确认使用现有模式
+- 避免重新发明现有解决方案
 
-✅ Pass if uses existing tech stack (e.g., Supabase, UV, pytest)
-❌ Fail if introduces new dependencies unnecessarily
+✅ 通过：使用现有技术栈（如 Supabase、UV、pytest）
+❌ 失败：不必要地引入新依赖
 
-### 3. Official Documentation Verified? (20%)
+### 3. 官方文档已验证？（20%）
 
-**Check**: Review official docs before implementation
+**检查：** 实施之前审查官方文档
 
-- Use Context7 MCP for official docs
-- Use WebFetch for documentation URLs
-- Verify API compatibility
+- 使用 Context7 MCP 获取官方文档
+- 使用 WebFetch 获取文档 URL
+- 验证 API 兼容性
 
-✅ Pass if official docs reviewed
-❌ Fail if relying on assumptions
+✅ 通过：已审查官方文档
+❌ 失败：依赖假设
 
-### 4. Working OSS Implementations Referenced? (15%)
+### 4. 引用了可工作的 OSS 实现？（15%）
 
-**Check**: Find proven implementations
+**检查：** 找到已验证的实现
 
-- Use Tavily MCP or WebSearch
-- Search GitHub for examples
-- Verify working code samples
+- 使用 Tavily MCP 或 WebSearch
+- 在 GitHub 上搜索示例
+- 验证可工作的代码示例
 
-✅ Pass if OSS reference found
-❌ Fail if no working examples
+✅ 通过：找到 OSS 引用
+❌ 失败：无可工作的示例
 
-### 5. Root Cause Identified? (15%)
+### 5. 根本原因已识别？（15%）
 
-**Check**: Understand the actual problem
+**检查：** 理解实际问题
 
-- Analyze error messages
-- Check logs and stack traces
-- Identify underlying issue
+- 分析错误消息
+- 检查日志和堆栈跟踪
+- 确定底层问题
 
-✅ Pass if root cause clear
-❌ Fail if symptoms unclear
+✅ 通过：根本原因清晰
+❌ 失败：症状不清楚
 
-## Confidence Score Calculation
-
-```
-Total = Check1 (25%) + Check2 (25%) + Check3 (20%) + Check4 (15%) + Check5 (15%)
-
-If Total >= 0.90:  ✅ Proceed with implementation
-If Total >= 0.70:  ⚠️  Present alternatives, ask questions
-If Total < 0.70:   ❌ STOP - Request more context
-```
-
-## Output Format
+## 信心分数计算
 
 ```
-📋 Confidence Checks:
-   ✅ No duplicate implementations found
-   ✅ Uses existing tech stack
-   ✅ Official documentation verified
-   ✅ Working OSS implementation found
-   ✅ Root cause identified
+总分 = 检查1 (25%) + 检查2 (25%) + 检查3 (20%) + 检查4 (15%) + 检查5 (15%)
 
-📊 Confidence: 1.00 (100%)
-✅ High confidence - Proceeding to implementation
+如果 总分 >= 0.90:  ✅ 继续实施
+如果 总分 >= 0.70:  ⚠️ 呈现替代方案，提问
+如果 总分 < 0.70:   ❌ 停止 — 请求更多上下文
 ```
 
-## Implementation Details
+## 输出格式
 
-The TypeScript implementation is available in `confidence.ts` for reference, containing:
+```
+📋 信心检查：
+   ✅ 未发现重复实现
+   ✅ 使用现有技术栈
+   ✅ 官方文档已验证
+   ✅ 找到可工作的 OSS 实现
+   ✅ 根本原因已识别
 
-- `confidenceCheck(context)` - Main assessment function
-- Detailed check implementations
-- Context interface definitions
+📊 信心：1.00 (100%)
+✅ 高信心 — 继续进行实施
+```
 
-## ROI
+## 实施详情
 
-**Token Savings**: Spend 100-200 tokens on confidence check to save 5,000-50,000 tokens on wrong-direction work.
+TypeScript 实现在 `confidence.ts` 中可供参考，包含：
 
-**Success Rate**: 100% precision and recall in production testing.
+- `confidenceCheck(context)` — 主评估函数
+- 详细的检查实现
+- 上下文接口定义
+
+## 投资回报率
+
+**Token 节省：** 花费 100-200 token 在信心检查上以节省 5,000-50,000 token 在错误方向的工作上。
+
+**成功率：** 生产测试中 100% 精确率和召回率。

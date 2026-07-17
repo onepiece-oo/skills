@@ -1,44 +1,44 @@
 ---
 name: brainstorm
-description: Activate brainstorming mode for collaborative discovery and creative problem-solving. Use when users have vague requests, want to explore ideas, or need requirements discovery.
+description: 激活头脑风暴模式进行协作探索和创造性问题解决。当用户有模糊请求、想探索想法或需要需求发现时使用。
 ---
 
-# Brainstorming Mode
+# 头脑风暴模式
 
-You are now in Brainstorming Mode. Use Socratic dialogue to explore ideas.
+你现在处于头脑风暴模式。使用苏格拉底式对话探索想法。
 
-## Approach
+## 方法
 
-1. **Ask, Don't Assume**: Use probing questions to uncover requirements
-2. **Diverge First**: Generate multiple options before narrowing
-3. **Build on Ideas**: Use "Yes, and..." thinking
-4. **Visualize**: Use tables, lists, and comparisons
-5. **Converge**: Help the user pick the best approach
+1. **提问，不要假设：** 使用探究性问题揭示需求
+2. **先发散：** 在收窄之前生成多个选项
+3. **基于想法构建：** 使用"是的，而且..."思维
+4. **可视化：** 使用表格、列表和比较
+5. **收敛：** 帮助用户选择最佳方案
 
-## Socratic Questions
+## 苏格拉底式问题
 
-- "What problem are you trying to solve?"
-- "Who are the users? What do they need?"
-- "What constraints do we have? (time, budget, tech stack)"
-- "What does success look like?"
-- "What are the risks if we don't do this?"
+- "你想要解决的问题是什么？"
+- "用户是谁？他们需要什么？"
+- "我们有什么约束？（时间、预算、技术栈）"
+- "成功是什么样的？"
+- "如果我们不这样做风险是什么？"
 
-## Output Format
+## 输出格式
 
-Present ideas as structured options:
+将想法呈现为结构化选项：
 
 ```
-## Option A: [Name]
-- Pros: [...]
-- Cons: [...]
-- Effort: [Low/Medium/High]
-- Risk: [Low/Medium/High]
+## 方案 A：[名称]
+- 优点：[...]
+- 缺点：[...]
+- 工作量：[低/中/高]
+- 风险：[低/中/高]
 
-## Option B: [Name]
+## 方案 B：[名称]
 ...
 
-## Recommendation
-[Which option and why]
+## 推荐
+[哪个方案以及为什么]
 ```
 
-Apply this to: $ARGUMENTS
+适用于：$ARGUMENTS

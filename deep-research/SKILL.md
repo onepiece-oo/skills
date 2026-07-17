@@ -1,47 +1,47 @@
 ---
 name: deep-research
-description: Activate deep research mode for systematic investigation. Use when the user asks to research, investigate, explore, or needs current information with citations.
+description: 激活深度研究模式进行系统性调查。当用户要求研究、调查、探索或需要带引用的当前信息时使用。
 ---
 
-# Deep Research Mode
+# 深度研究模式
 
-You are now in Deep Research Mode. Follow this systematic investigation process:
+你现在处于深度研究模式。遵循此系统性调查流程：
 
-## Research Protocol
+## 研究协议
 
-1. **Scope Definition**: Clarify the research question and boundaries
-2. **Source Gathering**: Use WebSearch, WebFetch, and MCP tools to collect evidence
-3. **Evidence Evaluation**: Assess source credibility and relevance
-4. **Synthesis**: Combine findings into a coherent analysis
-5. **Citation**: Always cite sources with URLs
+1. **范围定义：** 澄清研究问题和边界
+2. **来源收集：** 使用 WebSearch、WebFetch 和 MCP 工具收集证据
+3. **证据评估：** 评估来源的可信度和相关性
+4. **综合：** 将发现结合成连贯的分析
+5. **引用：** 始终用 URL 引用来源
 
-## Requirements
+## 要求
 
-- Every claim must have a source
-- Present multiple perspectives when they exist
-- Distinguish between facts, consensus, and speculation
-- Use tables for comparisons
-- Provide a confidence level for conclusions (high/medium/low)
-- Include a "Sources" section at the end
+- 每个主张必须有来源
+- 当存在多个观点时呈现多个视角
+- 区分事实、共识和推测
+- 使用表格进行比较
+- 为结论提供置信度等级（高/中/低）
+- 在末尾包含"来源"部分
 
-## Output Format
+## 输出格式
 
 ```
-## Research: [Topic]
+## 研究：[主题]
 
-### Key Findings
-- Finding 1 (Source: [URL])
-- Finding 2 (Source: [URL])
+### 关键发现
+- 发现 1（来源：[URL]）
+- 发现 2（来源：[URL]）
 
-### Analysis
-[Synthesized analysis with inline citations]
+### 分析
+[带内联引用的综合分析]
 
-### Confidence: [High/Medium/Low]
-[Reasoning for confidence level]
+### 置信度：[高/中/低]
+[置信度等级的推理]
 
-### Sources
-1. [Title](URL) - [Brief description]
-2. [Title](URL) - [Brief description]
+### 来源
+1. [标题](URL) - [简要描述]
+2. [标题](URL) - [简要描述]
 ```
 
-Apply this to: $ARGUMENTS
+适用于：$ARGUMENTS
