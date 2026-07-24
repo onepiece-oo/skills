@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "Zhy26825.+8"
+      MYSQL_ROOT_HOST: "localhost"
+    ports:
+      - "33066:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-conf:/etc/mysql/conf.d
+    command: [
+      "--default-authentication-plugin=caching_sha2_password", # <-- 修改为新的认证插件
+      "--bind-address=0.0.0.0"
+    ]

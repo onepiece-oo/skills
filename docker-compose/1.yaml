@@ -1,0 +1,151 @@
+version: "3.8"
+
+services:
+  # MySQL 数据库
+  mysql:
+    image: mysql:8.0
+    container_name: mysql8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "Zhy26825.+8"
+      MYSQL_ROOT_HOST: "%" # 允许远程连接，方便 Nacos 等容器访问
+      MYSQL_DATABASE: sknacos # 提前创建 Nacos 所需的数据库
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/mysql-data:/var/lib/mysql
+      - ./mysql/mysql-conf:/etc/mysql/conf.d
+    command:
+      [
+        "--default-authentication-plugin=caching_sha2_password",
+        "--bind-address=0.0.0.0",
+      ]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  # Redis 缓存
+  redis:
+    image: redis:7.0
+    container_name: redis7
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/redis-data:/data
+      # 不再挂载 redis.conf，直接使用官方默认配置，避免因缺失文件无法启动
+    command: ["redis-server"] # 可加 --appendonly yes 开启持久化
+    networks:
+      - app-network
+
+  # RabbitMQ 消息队列
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq3
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=hutongsk
+      - RABBITMQ_DEFAULT_PASS=hutongsk123
+    volumes:
+      - ./rabbit-compose/rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - app-network
+
+  # Nacos 注册中心（使用本地 MySQL）
+  nacos:
+    image: nacos/nacos-server:v3.0.3
+    container_name: nacos3
+    restart: always
+    environment:
+      - MODE=standalone
+      - SPRING_DATASOURCE_PLATFORM=mysql
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/sknacos?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      - MYSQL_SERVICE_HOST=mysql
+      - MYSQL_SERVICE_PORT=3306
+      - MYSQL_SERVICE_DB_NAME=sknacos
+      - MYSQL_SERVICE_USER=root
+      - MYSQL_SERVICE_PASSWORD=Zhy26825.+8
+      - NACOS_AUTH_ENABLE=true
+      - NACOS_AUTH_TOKEN=Ui0YwTlSg4dAE96B8lI1BVDs/0mOuFxPPITFHx+vdIQ=
+      - NACOS_AUTH_IDENTITY_KEY=nacos_identity_key
+      - NACOS_AUTH_IDENTITY_VALUE=nacos_identity_value
+    volumes:
+      - ./nacos/logs:/home/nacos/logs
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9849:9849" # 移除了无用的 8080 映射（Nacos 默认已改用 8848）
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  # Nginx 反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - TZ=Asia/Shanghai
+    configs:
+      - source: nginx_conf
+        target: /etc/nginx/nginx.conf
+      - source: index_html
+        target: /usr/share/nginx/html/index.html
+    volumes:
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - app-network
+
+# 用 docker compose config 的方式提供配置文件内容，不再依赖宿主机目录
+configs:
+  nginx_conf:
+    content: |
+      events {
+        worker_connections 1024;
+      }
+      http {
+        include       /etc/nginx/mime.types;
+        default_type  application/octet-stream;
+        sendfile        on;
+        keepalive_timeout  65;
+        server {
+          listen 80;
+          server_name localhost;
+          location / {
+            root   /usr/share/nginx/html;
+            index  index.html index.htm;
+          }
+          error_page 500 502 503 504 /50x.html;
+          location = /50x.html {
+            root   /usr/share/nginx/html;
+          }
+        }
+      }
+  index_html:
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head><title>Welcome</title></head>
+      <body><h1>It works!</h1></body>
+      </html>
+
+networks:
+  app-network:
+    driver: bridge
