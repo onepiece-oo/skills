@@ -26,10 +26,10 @@
 
 ## 服务器连接
 - 别名：`OnePiece`（SSH config 已配置免密登录）
-- 地址：`43.226.46.171:2002`，用户 `OnePiece`，密钥 `~/.ssh/id_ed25519`
-- 远程命令执行：直接使用 `ssh OnePiece "命令"`。
+- 地址：`43.226.44.151:2002`，用户 `OnePiece`，密钥 `~/.ssh/WorkComputer`
+- 远程命令执行：直接使用 `ssh OnePiece@43.226.44.151 "命令"`。
 - **默认工作目录**：`~`。若命令涉及项目文件，需在命令内显式 `cd` 到目标路径。
-- **备用回退命令**（如 SSH config 未加载）：`ssh -i ~/.ssh/id_ed25519 -p 2002 OnePiece@43.226.46.171`
+- **备用回退命令**（如 SSH config 未加载）：`ssh -i ~/.ssh/WorkComputer -p 2002 OnePiece@43.226.44.151`
 
 ## 项目配置规范
 - 新项目初始化：自动在项目根目录创建 `.claude/` 文件夹。
