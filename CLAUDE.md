@@ -41,5 +41,5 @@
 
 ## 日志文件
 - **提到"日志"时，默认去项目级 `.claude/` 目录下查找。**
-- `log.log`（短日志）和 `log.txt`（长日志）**统一存放在项目级 `.claude/` 目录下**（即 `.claude/log.log`、`.claude/log.txt`）。
+- `log.log`（短日志）和 `log.json`（长日志）**统一存放在项目级 `.claude/` 目录下**（即 `.claude/log.log`、`.claude/log.json`）。
 - 当用户提到这两个文件名或笼统说"日志"时，直接前往项目 `.claude/` 目录读取/写入，不在其他地方查找。
