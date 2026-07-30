@@ -31,7 +31,7 @@ description: 整理零散的网站登录信息、账号密码、项目详情或�
 
 ```javascript
 var DATA = {
-  meta: { created: "2026-07-15", updated: "2026-07-24", tags: ["账号", "基础设施"] },
+  meta: { created: "2026-07-15", updated: "2026-07-30", tags: ["账号", "基础设施"] },
   platforms: [
     {
       name: "Redis Cloud",
@@ -39,18 +39,112 @@ var DATA = {
       loginMethod: "邮箱",
       username: "zhy1285198202@gmail.com",
       password: "Zhy26825.+8",
-      note: "云 Redis 管理平台账号",
+      note: "云 Redis 管理平台账号（含 OnePiecSquid 独立节点）",
       instances: [
         {
-          name: "生产实例",
+          name: "生产实例（Cloud）",
           host: "redis-11779.c323.us-east-1-2.ec2.cloud.redislabs.com",
           port: "11779",
           password: "Zhy26825.+8",
-          note: "生产环境"
+          note: "生产环境 - Redis Cloud 官方平台"
+        },
+        {
+          name: "生产节点（OnePiecSquid）",
+          host: "suave-step-basketball-95555.db.redis.io",
+          port: "19298",
+          password: "Zhy26825.+8",
+          note: "自购 Redis 服务器 - OnePiecSquid 账号"
+        }
+      ]
+    },
+    {
+      name: "SQLPub",
+      url: "https://console.sqlpub.com/",
+      loginMethod: "邮箱",
+      username: "1285198202@qq.com",
+      password: "OdpJ2U40VRsDcKCH",
+      note: "SQLPub 管理平台",
+      instances: [
+        {
+          name: "onepiece 数据库",
+          host: "mysql6.sqlpub.com:3311",
+          dbName: "onepiece",
+          dbUser: "onepiece",
+          status: "正常",
+          version: "8.4.3",
+          region: "中国",
+          type: "免费版",
+          createdAt: "2026-04-24 16:25:31",
+          expiresAt: "2099-12-31 23:59:59",
+          password: "TIKP35g0oDi5RMJs"
+        }
+      ]
+    },
+    {
+      name: "Apifox",
+      url: "https://apifox.com/",
+      loginMethod: "令牌",
+      password: "afxp_f2db00wVY7Mpp3Fk7yxjd5FR31IKiofvATgN",
+      note: "API 开发与测试平台令牌"
+    },
+    {
+      name: "163 Mail",
+      url: "https://mail.163.com/",
+      loginMethod: "邮箱",
+      username: "onespiecesquid@163.com",
+      password: "Zhy26825.+8",
+      note: "网易邮箱账号"
+    },
+    {
+      name: "Supabase",
+      url: "https://supabase.com/",
+      loginMethod: "数据库连接",
+      username: "",
+      password: "",
+      note: "PostgreSQL 托管数据库实例（区域 ap-northeast-2）",
+      instances: [
+        {
+          name: "生产数据库",
+          host: "aws-1-ap-northeast-2.pooler.supabase.com",
+          port: "5432",
+          dbName: "postgres",
+          dbUser: "postgres.xxyrehdqyvuimvahqaa0",
+          status: "运行中",
+          version: "13",
+          region: "ap-northeast-2 (东京)",
+          type: "付费版",
+          createdAt: "2026-07-30 14:00:00",
+          expiresAt: "2027-07-31 23:59:59",
+          password: "Zhy26825.+8",
+          note: "主生产环境"
+        }
+      ]
+    },
+    {
+      name: "MongoDB Atlas",
+      url: "https://cloud.mongodb.com/",
+      loginMethod: "谷歌账号",
+      username: "",
+      password: "",
+      note: "MongoDB Atlas 云数据库集群管理入口",
+      instances: [
+        {
+          name: "生产集群",
+          host: "atlas-sql-69eb3038269a5bf8c8ea1a60-cw2hmb.a.query.mongodb.net",
+          port: "27017",
+          dbName: "sample_airbnb",
+          dbUser: "OnePiece",
+          status: "运行中",
+          version: "6.0",
+          region: "未知 (美洲)",
+          type: "免费版",
+          createdAt: "2026-07-30 14:00:00",
+          expiresAt: "2026-12-31 23:59:59",
+          password: "Zhy26825.+8",
+          note: "通过 OnePiece 账户连接，需 Google 账号登录 Web 控制台"
         }
       ]
     }
-    // ...更多平台
   ]
 };
 ```
@@ -68,7 +162,7 @@ var DATA = {
 | 位置 | emoji | 说明 |
 |------|-------|------|
 | 侧栏标题 | 📍 | 地图标 |
-| 侧栏副标 | ⚓ | 锚点分隔 |
+| 侧栏副标 | ☠ | 锚点分隔 |
 | 主标题 | 👒 | 草帽 |
 | 主副标 | ☠ | 悬赏令 |
 | 平台卡片 | 📍 | 据点标识 |
@@ -95,16 +189,17 @@ CSS 中通过 `content: '\UE4D3'` 等 Unicode 编码写入，避免转义问题�
 5. **密码全程不显示明文** — 验证通过后只复制，不暴露内容
 6. **URL 可点击** — 网址渲染为超链接，新标签页打开
 7. **侧边栏收起** — 右上角折叠按钮，带动画过渡
-8. **平台折叠** — 每个平台列表项可点击折叠/展开实例子项
+8. **平台折叠** — 点击右侧三角 ▼ 展开/收起实例子项；点击平台其他区域（包括圆点）跳转到对应内容
 9. **主密码锁状态提示** — 密码验证通过后 Toast 提示"验证通过，之后密码点击即可复制"
 
 ## 侧边栏设计
 
 - **布局**：280px 固定宽度，overflow-y 自适应，thin scrollbar
 - **header**：居中标题 "海贼笔记" + 副标 "ONE PIECE LOG BOOK"（锚 icon + 金线分割）
-- **平台列表**：h3 元素，圆点指示器 + 右侧三角箭头折叠标识
-- **实例列表**：h4 元素，锚 icon + 左竖线 hover 高亮
+- **平台列表**：h3 元素，左侧金色呼吸圆点 + 右侧可点击折叠箭头 ▼（有实例的平台才有）
+- **实例列表**：h4 元素，锚图标 + 左竖线 hover 高亮
 - **收起态**：translateX(-280px) + opacity 0 + pointer-events none
+- **点击区域**：整个 h3 条目均可点击跳转（圆点、文字、空白区域均生效），仅右侧箭头触发折叠
 
 ## 平台识别规则
 
@@ -146,6 +241,8 @@ CSS 中通过 `content: '\UE4D3'` 等 Unicode 编码写入，避免转义问题�
 | `.pw-dialog` | 密码验证弹窗 |
 | `.pw-dialog-inner` | 弹窗内容区 |
 | `.toast` | 通知消息 |
+| `.dot` | 左侧圆点指示器 |
+| `.fold-trigger` | 折叠箭头 |
 
 ## 关键 JS 变量
 
@@ -174,13 +271,13 @@ CSS 中通过 `content: '\UE4D3'` 等 Unicode 编码写入，避免转义问题�
 | `handlePasswordClick(span)` | 密码点击处理：已解锁直接复制，未解锁弹验证框 |
 | `copyPasswordByKey(pwKey)` | 通过 key 查找并复制密码 |
 | `findPasswordByKey(pwKey)` | 遍历 DATA 匹配 pwKey，找到即返回 |
-| `toggleGroup(groupKey)` | 平台折叠/展开（切换 folded class + 子元素 display） |
+| `toggleGroup(event, groupKey)` | 平台折叠/展开（切换 folded class + 子元素 display），event 可选 stopPropagation |
 | `toggleSidebar()` | 侧栏收起/展开（同时更新 sidebar + btn + content margin） |
 | `createCollapseBtn()` | 动态创建折叠按钮 |
 
 ## 文件路径
 
-默认：`D:\Warehouse\ThinkNotes\ThinkNotes.html`，用户可指定路径。
+默认：`.cc-switch\skills\ThinkNotes\ThinkNotes.html`，用户可指定路径。
 
 ## 常见错误
 
@@ -198,6 +295,5 @@ CSS 中通过 `content: '\UE4D3'` 等 Unicode 编码写入，避免转义问题�
 | 侧栏折叠后 content margin 不同步 | toggleSidebar 中同时更新 sidebar class + content marginLeft |
 | 入场动画重复闪烁 | 使用 `animation-fill-mode: both` 确保只播放一次 |
 | **密码解锁后无法复制** | `renderFields` 拼接 `data-pw-key` 时必须追加 `-密码` 后缀（即 `pwPrefix + '-密码'`），与 `findPasswordByKey` 构造的 key 格式保持一致 |
-| 空密码跳过渲染 | `renderFields` 中 `if (!val) continue` 防止空密码字段无意义渲染 |
-| `GATEWAY_UNLOCKED` 控制分支 | `handlePasswordClick` 开头必须检查此变量，已解锁直接调用 `copyPasswordByKey` 跳过弹窗 |
-| clipboard API 在 `file://` 下可能静默失败 | 某些浏览器 HTTPS/localhost 限制剪贴板，需加 fallback 或 Toast 确认提示 |
+| **点击圆点/空白区域不跳转** | 需在侧边栏事件委托中捕获 `h3` 的 click，而不仅仅是 `a` 标签 |
+| 折叠箭头位置偏右 | 调整 `.fold-trigger` 的 `margin-left` 或 flex 布局使其贴靠右侧边框 |
