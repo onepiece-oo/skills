@@ -15,7 +15,7 @@ description: 创建新技能、编辑现有技能或验证技能在部署前是�
 
 **核心原则：** 如果你没有看着一个代理在没有技能的情况下失败，你就不知道技能是否教了正确的东西。
 
-**必需背景：** 你必须在使用此技能之前理解 superpowers:test-driven-development。该技能定义了基本的红-绿-重构循环。此技能将 TDD 适配到文档。
+**必需背景：** 你必须在使用此技能之前理解 test-driven-development。该技能定义了基本的红-绿-重构循环。此技能将 TDD 适配到文档。
 
 **官方指导：** 有关 Anthropic 的官方技能创作最佳实践，参见 anthropic-best-practices.md。本文档提供补充 TDD 方法的额外模式和指南。
 
@@ -278,7 +278,7 @@ wc -w skills/path/SKILL.md
 **在编写引用其他技能的文档时：**
 
 仅使用技能名称，带明确的要求标记：
-- ✅ 好：`**REQUIRED SUB-SKILL:** Use superpowers:test-driven-development`
+- ✅ 好：`**REQUIRED SUB-SKILL:** Use test-driven-development`
 - ✅ 好：`**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
 - ❌ 差：`See skills/testing/test-driven-development`（不清楚是否必需）
 - ❌ 差：`@skills/testing/test-driven-development/SKILL.md`（强制加载，消耗上下文）
@@ -388,7 +388,7 @@ pptx/
 - 不要在运行测试时"适配"
 - 删除就是删除
 
-**必需背景：** superpowers:test-driven-development 技能解释为什么这很重要。相同的原则适用于文档。
+**必需背景：** test-driven-development 技能解释为什么这很重要。相同的原则适用于文档。
 
 ## 测试所有技能类型
 

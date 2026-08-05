@@ -13,9 +13,9 @@ description: 有包含多步任务的规格或需求时，在触碰代码之前�
 
 **开头声明：** "我正在使用 writing-plans 技能来创建实施计划。"
 
-**上下文：** 如果在隔离的工作树中工作，它应该通过 superpowers:using-git-worktrees 技能在执行时创建。
+**上下文：** 如果在隔离的工作树中工作，它应该通过 using-git-worktrees 技能在执行时创建。
 
-**保存计划到：** `docs/superpowers/plans/YYYY-MM-DD-<功能名称>.md`
+**保存计划到：** 项目级 `.claude/` 目录下，如 `预警列表接入 IoT 开放平台计划.md`
 - （用户对计划位置的偏好覆盖此默认值）
 
 ## 范围检查
@@ -53,7 +53,7 @@ description: 有包含多步任务的规格或需求时，在触碰代码之前�
 ```markdown
 # [功能名称] 实施计划
 
-> **给 agentic 工作者：** 必需子技能：使用 superpowers:subagent-driven-development（推荐）或 superpowers:executing-plans 逐任务实施此计划。步骤使用复选框（`- [ ]`）语法跟踪。
+> **给 agentic 工作者：** 必需子技能：使用 subagent-driven-development（推荐）或 executing-plans 逐任务实施此计划。步骤使用复选框（`- [ ]`）语法跟踪。
 
 **目标：** [一句话描述构建什么]
 
@@ -147,7 +147,7 @@ git commit -m "feat: add specific feature"
 
 保存计划后，提供执行选择：
 
-**"计划完成并保存到 `docs/superpowers/plans/<文件名>.md`。两种执行选项：**
+**"计划完成并保存到项目级 `.claude/` 目录下（文件名 = 完整中文计划名）。两种执行选项：**
 
 **1. Subagent 驱动（推荐）** — 我为每个任务派发一个新鲜的 subagent，任务间审查，快速迭代
 
@@ -156,9 +156,9 @@ git commit -m "feat: add specific feature"
 **哪种方法？"**
 
 **如果选择 Subagent 驱动：**
-- **必需子技能：** 使用 superpowers:subagent-driven-development
+- **必需子技能：** 使用 subagent-driven-development
 - 每个任务一个新鲜 subagent + 两阶段审查
 
 **如果选择内联执行：**
-- **必需子技能：** 使用 superpowers:executing-plans
+- **必需子技能：** 使用 executing-plans
 - 带检查点的批量执行以审查

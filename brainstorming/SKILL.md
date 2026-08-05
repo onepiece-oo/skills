@@ -26,7 +26,7 @@ description: 必须在任何创造性工作之前使用 — 创建功能、构�
 3. **提出澄清问题** — 一次一个，理解目的/约束/成功标准
 4. **提出 2-3 种方案** — 附带优缺点和你的推荐
 5. **呈现设计方案** — 按复杂度分节呈现，每节后获得用户批准
-6. **撰写需求文档** — 保存到 `docs/superpowers/specs/YYYY-MM-DD-<主题>-design.md` 并提交
+6. **撰写需求文档** — 保存到 `.claude/specs/YYYY-MM-DD-<主题>-design.md` 并提交
 7. **需求文档自查** — 快速检查占位符、矛盾、歧义、范围（见下文）
 8. **用户审查已写好的需求文档** — 要求用户在继续之前审查需求文件
 9. **过渡到实现** — 调用 writing-plans 技能创建实施计划
@@ -103,7 +103,7 @@ digraph brainstorming {
 
 **文档：**
 
-- 将已验证的设计（需求文档）写入 `docs/superpowers/specs/YYYY-MM-DD-<主题>-design.md`
+- 将已验证的设计（需求文档）写入 `.claude/specs/YYYY-MM-DD-<主题>-design.md`
   - （用户需求文档位置偏好覆盖此默认值）
 - 如果可用，使用 elements-of-style:writing-clearly-and-concisely 技能
 - 将需求文档提交到 git

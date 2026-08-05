@@ -11,7 +11,7 @@ description: 有已写好的实施计划要在当前会话中执行时使用，�
 
 **开头声明：** "我正在使用 executing-plans 技能来实施此计划。"
 
-**注意：** 告诉用户，Superpowers 在有 subagent 访问时效果要好得多。在有 subagent 支持的平台上运行质量会显著提高（Claude Code、Codex CLI、Codex App 和 Copilot CLI 都符合；参见 `../using-superpowers/references/` 中的平台参考）。如果有 subagent 可用，请使用 superpowers:subagent-driven-development 替代此技能。
+**注意：** 告诉用户，Superpowers 在有 subagent 访问时效果要好得多。在有 subagent 支持的平台上运行质量会显著提高（Claude Code、Codex CLI、Codex App 和 Copilot CLI 都符合；参见 `../using-superpowers/references/` 中的平台参考）。如果有 subagent 可用，请使用 subagent-driven-development 替代此技能。
 
 ## 流程
 
@@ -33,7 +33,7 @@ description: 有已写好的实施计划要在当前会话中执行时使用，�
 
 所有任务完成并验证后：
 - 声明："我正在使用 finishing-a-development-branch 技能来完成此工作。"
-- **必需子技能：** 使用 superpowers:finishing-a-development-branch
+- **必需子技能：** 使用 finishing-a-development-branch
 - 遵循该技能验证测试、呈现选项、执行选择
 
 ## 何时停下来寻求帮助
@@ -65,6 +65,6 @@ description: 有已写好的实施计划要在当前会话中执行时使用，�
 ## 集成
 
 **必需工作流技能：**
-- **superpowers:using-git-worktrees** — 确保隔离工作区（创建或验证现有工作树）
-- **superpowers:writing-plans** — 创建此技能执行的计划
-- **superpowers:finishing-a-development-branch** — 所有任务完成后完成开发
+- **using-git-worktrees** — 确保隔离工作区（创建或验证现有工作树）
+- **writing-plans** — 创建此技能执行的计划
+- **finishing-a-development-branch** — 所有任务完成后完成开发

@@ -62,7 +62,7 @@ digraph process {
     "阅读计划，注意上下文和全局约束，创建待办" [shape=box];
     "还有更多任务？" [shape=diamond];
     "派发最终代码审查者 subagent（../requesting-code-review/code-reviewer.md）" [shape=box];
-    "使用 superpowers:finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
+    "使用 finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
 
     "阅读计划，注意上下文和全局约束，创建待办" -> "派发实现者 subagent（./implementer-prompt.md）";
     "派发实现者 subagent（./implementer-prompt.md）" -> "实现者 subagent 提问？";
@@ -77,7 +77,7 @@ digraph process {
     "在待办列表和进度账本中标记任务完成" -> "还有更多任务？";
     "还有更多任务？" -> "派发实现者 subagent（./implementer-prompt.md）" [label="是"];
     "还有更多任务？" -> "派发最终代码审查者 subagent（../requesting-code-review/code-reviewer.md）" [label="否"];
-    "派发最终代码审查者 subagent（../requesting-code-review/code-reviewer.md）" -> "使用 superpowers:finishing-a-development-branch";
+    "派发最终代码审查者 subagent（../requesting-code-review/code-reviewer.md）" -> "使用 finishing-a-development-branch";
 }
 ```
 
@@ -174,14 +174,14 @@ digraph process {
 
 - [implementer-prompt.md](implementer-prompt.md) - 派发实现者 subagent
 - [task-reviewer-prompt.md](task-reviewer-prompt.md) - 派发任务审查者 subagent（规格合规 + 代码质量）
-- 最终整分支审查：使用 superpowers:requesting-code-review 的 [code-reviewer.md](../requesting-code-review/code-reviewer.md)
+- 最终整分支审查：使用 requesting-code-review 的 [code-reviewer.md](../requesting-code-review/code-reviewer.md)
 
 ## 示例工作流
 
 ```
 你：我正在使用 Subagent-Driven Development 来执行此计划。
 
-[读取计划文件一次：docs/superpowers/plans/feature-plan.md]
+[读取计划文件一次：.claude/feature-plan.md]
 [为所有任务创建待办]
 
 Task 1：挂钩安装脚本
@@ -306,13 +306,13 @@ Task 2：恢复模式
 ## 集成
 
 **必需工作流技能：**
-- **superpowers:using-git-worktrees** — 确保隔离工作区（创建或验证现有工作树）
-- **superpowers:writing-plans** — 创建此技能执行的计划
-- **superpowers:requesting-code-review** — 最终整分支审查的代码审查模板
-- **superpowers:finishing-a-development-branch** — 所有任务完成后完成开发
+- **using-git-worktrees** — 确保隔离工作区（创建或验证现有工作树）
+- **writing-plans** — 创建此技能执行的计划
+- **requesting-code-review** — 最终整分支审查的代码审查模板
+- **finishing-a-development-branch** — 所有任务完成后完成开发
 
 **Subagents 应使用：**
-- **superpowers:test-driven-development** — Subagents 对每个任务遵循 TDD
+- **test-driven-development** — Subagents 对每个任务遵循 TDD
 
 **替代工作流：**
-- **superpowers:executing-plans** — 用于并行会话而非同会话执行
+- **executing-plans** — 用于并行会话而非同会话执行
