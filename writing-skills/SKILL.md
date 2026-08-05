@@ -279,7 +279,7 @@ wc -w skills/path/SKILL.md
 
 仅使用技能名称，带明确的要求标记：
 - ✅ 好：`**REQUIRED SUB-SKILL:** Use test-driven-development`
-- ✅ 好：`**REQUIRED BACKGROUND:** You MUST understand superpowers:systematic-debugging`
+- ✅ 好：`**REQUIRED BACKGROUND:** You MUST understand systematic-debugging`
 - ❌ 差：`See skills/testing/test-driven-development`（不清楚是否必需）
 - ❌ 差：`@skills/testing/test-driven-development/SKILL.md`（强制加载，消耗上下文）
 
